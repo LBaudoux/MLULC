@@ -1,0 +1,58 @@
+{
+  "exp_name": "Image_only_sof_noise_mos_1_to_3_nl10",
+  "agent": "MultiLULCAgent",
+  "use_scheduler": false,
+
+  "cuda": true,
+  "gpu_device": 0,
+  "seed": 666,
+  "num_workers": 2,
+
+  "train_batch_size": 8,
+  "valid_batch_size": 8,
+  "test_batch_size":8,
+
+  "number_of_feature_map":12,
+  "embedding_dim":[26,600],
+
+  "max_epoch": 2 ,
+
+  "validate_every": 1,
+
+  "checkpoint_file": "checkpoint.pth.tar",
+  "loss_by_patch_file": "loss_by_patch_file.json",
+
+  "data_loader": "Landcover1To1DataLoader",
+  "data_loader_workers": 0,
+  "pin_memory": true,
+  "async_loading": true,
+
+  "data_folder": "data/universal_embedding_dataset_6000",
+  "datasets": ["oso.hdf5","mos.hdf5"],
+  "learning_rate": [0.001,0.001,0.001,0.001,0.001,0.001],
+
+  "tensorboard":false,
+
+  "cp_to_tmpdir":true,
+
+  "memory_monger": true,
+
+  "up_mode": "bilinear",
+
+  "group_norm": 4,
+
+  "decoder_depth": 1,
+
+  "mode": "light",
+
+  "pooling_factors": [3,3,3,3,3],
+
+  "mul": true,
+
+  "softpos": true,
+
+  "use_pos": false,
+
+  "decoder_atrou": true
+
+}
