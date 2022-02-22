@@ -1,5 +1,6 @@
 # Multi Land-use/Land-cover Translation Network
-
+ This repo is still subject to change. In paricular, we will improve the README installation procedure, the code comments and the influence of each parameter.
+ 
 ## Installation
 
 1. Clone the repository
