@@ -54,7 +54,7 @@ class MultiLULCAgent(BaseAgent):
             self.logger.info("Program will run on *****CPU*****\n")
 
         # define data_loader
-        self.data_loader = LandcoverToLandcoverDataLoader(config=config,device=self.device,resample_all=False,pos_enc=True)
+        self.data_loader = LandcoverToLandcoverDataLoader(config=config,device=self.device,pos_enc=True)
 
         # Get required param for network initialisation
         input_channels=self.data_loader.input_channels

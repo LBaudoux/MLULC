@@ -12,7 +12,7 @@ from datasets.transforms import ToOneHot,CoordEnc,FlipTransform,RotationTransfor
 import h5py
 from sklearn.decomposition import PCA
 from matplotlib.colors import LinearSegmentedColormap
-cmap_dict={"1.hdf5":[(255,255,255),(230, 0, 77), (255, 0, 0), (204, 77, 242), (204, 0, 0), (230, 204, 204),
+cmap_dict={"clc.hdf5":[(255,255,255),(230, 0, 77), (255, 0, 0), (204, 77, 242), (204, 0, 0), (230, 204, 204),
                 (230, 204, 230), (166, 0, 204), (166, 77, 0), (255, 77, 255), (255, 166, 255), (255, 230, 255),
                 (255, 255, 168), (255, 255, 0), (230, 230, 0), (230, 128, 0), (242, 166, 77), (230, 166, 0),
                 (230, 230, 77), (255, 230, 166), (255, 230, 77), (230, 204, 77), (242, 204, 166), (128, 255, 0),
@@ -20,31 +20,31 @@ cmap_dict={"1.hdf5":[(255,255,255),(230, 0, 77), (255, 0, 0), (204, 77, 242), (2
                 (230, 230, 230), (204, 204, 204), (204, 255, 204), (0, 0, 0), (166, 230, 204), (166, 166, 255),
                 (77, 77, 255), (204, 204, 255), (230, 230, 255), (166, 166, 230), (0, 204, 242), (128, 242, 230),
                 (0, 255, 166), (166, 255, 230), (230, 242, 255)],
-           "2.hdf5":[ (255,255,255),(255, 0, 255), (255, 85, 255), (255, 170, 255), (0, 255, 255), (255, 255, 0),
+           "oso.hdf5":[ (255,255,255),(255, 0, 255), (255, 85, 255), (255, 170, 255), (0, 255, 255), (255, 255, 0),
                     (208, 255, 0),
                     (161, 214, 0), (255, 170, 68), (214, 214, 0), (255, 85, 0), (197, 255, 255), (170, 170, 97),
                     (170, 170, 0), (170, 170, 255), (85, 0, 0), (0, 156, 0), (0, 50, 0), (170, 255, 0),
                     (85, 170, 127),
                     (255, 0, 0), (255, 184, 2), (190, 190, 190), (0, 0, 255)],
-           "3.hdf5":[ (255,255,255),(132,202,157),(230,223,205),(249,245,208),(211,238,251),(180,193,170),(255,205,93),(192,43,64),(187,184,220),(58,147,169),(0,0,0),(138,140,143)],
+           "mos.hdf5":[ (255,255,255),(132,202,157),(230,223,205),(249,245,208),(211,238,251),(180,193,170),(255,205,93),(192,43,64),(187,184,220),(58,147,169),(0,0,0),(138,140,143)],
            "ocsge_o.hdf5":[ (255,255,255),(255, 55, 122), (255, 145, 145), (255, 255, 153), (166, 77, 0), (204, 204, 204),
                     (0, 204, 242),
                     (166, 230, 204), (128, 255, 0), (0, 166, 0), (128, 190, 0), (166, 255, 128), (230, 128, 0),
                     (204, 242, 77), (204, 255, 204)],
            "ocsge_u.hdf5":[ (255,255,255),(255,255,168),(0,128,0),(166,0,204),(0,0,153),(230,0,77),(204,0,0),(90,90,90),(230,204,230),(0,102,255),(255,0,0),(255,75,0),(255,77,255),(64,64,64),(240,240,40)],
            "cgls.hdf5":[ (255,255,255),(46,128,21),(132,151,0),(255,187,34),(255,255,76),(0,150,160),(250,230,160),(180,180,180),(240,150,255),(250,0,0),(240,240,240),(0,50,200),(0,0,128)]}
-label_dict={"1.hdf5":["no data", "cont. urban", "disc urban", "ind/ om", 'road/ rail', 'port', 'airport',
+label_dict={"clc.hdf5":["no data", "cont. urban", "disc urban", "ind/ om", 'road/ rail', 'port', 'airport',
                        'mine', 'dump', 'construction', 'green urban', 'leisure', 'non irrigated crops',
                        'perm irrigated crops', 'rice', 'vineyards', 'fruit', 'olive', 'pastures', 'mixed crops',
                        'complex crops', 'crops + nature', 'agro-forestry', 'broad leaved', 'conifere', 'mixed forest',
                        'natural grass', 'moors', 'sclerophyllous', 'transi wood-shrub', 'sand', 'rocks',
                        'sparsely vege', 'burnt', 'snow', 'marshes', 'peat bogs', 'salt marshes', 'salines',
                        'intertidal flats', 'river', 'lakes', 'lagoons', 'estuaries', 'sea'],
-            "2.hdf5":["no data","dense urban", "sparse urban", "ind and com", "roads", "rapeseeds", "cereals",
+            "oso.hdf5":["no data","dense urban", "sparse urban", "ind and com", "roads", "rapeseeds", "cereals",
                            "protein crops", "soy", "sunflower", "maize", "rice", "tubers", "meadow", "orchards",
                            "vineyards", "Broad-leaved", "coniferous", "lawn", "shrubs", "rocks", "sand", "snow",
                            "water"],
-            "3.hdf5":["no data","forest","semi-natural","crops","water","green urban","ind. housing","col. housing","activities","facilities","transport","Mine/dump"],
+            "mos.hdf5":["no data","forest","semi-natural","crops","water","green urban","ind. housing","col. housing","activities","facilities","transport","Mine/dump"],
             "ocsge_o.hdf5":["no data","built","concrete","mineral","mixed materials","bare soil","water","snow","broad-leaved","neadle-leaved","mixed-trees","shrubs","vine","grass","moss"],
             "ocsge_u.hdf5":["no data","farming","forestry","extraction","fishing","house/ind/com","roads","rails","airports","fluvial transport","logistics/storage","public uti networks","transitionnal","abandoned","no-use"],
             "cgls.hdf5":["no data","closed forest","open forest","shrubland","herbaceous","wetland","moss/lichen","bare/sparse","cropland","built-up","snow","water","ocean"]
@@ -112,7 +112,7 @@ class LandcoverToLandcover(Dataset):
         return sample
 
 class LandcoverToLandcoverDataLoader:
-    def __init__(self, config,resample_all=True,to_one_hot=True,to_soft_labels=False,device="cuda",pos_enc=False,use_image=False,ampli=True,image="7.hdf5",normalize=((2800, 580, 670, 442), (1546, 886, 793, 768)),num_workers=4):
+    def __init__(self, config,to_one_hot=True,device="cuda",pos_enc=False,ampli=True,num_workers=4):
         """
         :param config:
         """
@@ -182,7 +182,7 @@ class LandcoverToLandcoverDataLoader:
         self.test_loader = {source: {target: DataLoader(val, batch_size=self.config.test_batch_size, shuffle=True,num_workers=num_workers,pin_memory=pin_memory) for target, val in targetval.items()} for source, targetval in self.test.items()}
 
 
-    def plot_samples_per_epoch(self, inputs,targets,outputs,embedding, dataset_src,dataset_tgt,epoch,coordinate,cmap="default",title=None):
+    def plot_samples_per_epoch(self, inputs,targets,outputs,embedding, dataset_src,dataset_tgt,epoch,coordinate,cmap="original",title=None):
 
 
 
@@ -208,8 +208,11 @@ class LandcoverToLandcoverDataLoader:
                 cmap_tgt=LinearSegmentedColormap.from_list(dataset_tgt,np.array(cmap_dict[dataset_tgt])/ 255, N=self.n_classes[dataset_tgt] + 1)
 
             m1 = ax[0][0].imshow(inputs.cpu().long().numpy(), cmap=cmap_src, vmin=0 - .5, vmax=self.n_classes[dataset_src] + 0.5)
+            ax[0][0].set_title("Source")
             m2 = ax[0][1].imshow(targets.cpu().long().numpy(), cmap=cmap_tgt, vmin=0 - .5, vmax=self.n_classes[dataset_tgt] + 0.5)
+            ax[0][1].set_title("target")
             m3 = ax[1][0].imshow(outputs.cpu().long().numpy(), cmap=cmap_tgt, vmin=0 - .5, vmax=self.n_classes[dataset_tgt] + 0.5)
+            ax[1][0].set_title("Translation")
             # if embedding[0].shape[0]>2:
             #     emb=embedding[0,:3].cpu().numpy().transpose(1,2,0)
             # elif embedding[0].shape[0]==2:
@@ -230,6 +233,7 @@ class LandcoverToLandcoverDataLoader:
             #emb = np.mean(embedding[0].cpu().numpy(), axis=0)
             # m4=  ax[1][1].imshow(emb/np.max(emb),vmin=np.percentile(emb,5),vmax=np.percentile(emb,95),cmap="jet")
             m4 = ax[1][1].imshow(emb)
+            ax[1][1].set_title("embedding")
             # tell the colorbar to tick at integers
             f.colorbar(m1, ticks=np.arange(0, self.n_classes[dataset_src] + 1),ax=ax[0][0])
             f.colorbar(m2, ticks=np.arange(0, self.n_classes[dataset_tgt] + 1),ax=ax[0][1])
