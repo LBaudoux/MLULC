@@ -8,14 +8,14 @@
   "seed": 666,
   "num_workers": 2,
 
-  "train_batch_size": 8,
-  "valid_batch_size": 8,
-  "test_batch_size":8,
+  "train_batch_size": 20,
+  "valid_batch_size": 20,
+  "test_batch_size":20,
 
-  "number_of_feature_map":12,
-  "embedding_dim":[26,600],
+  "number_of_feature_map":32,
+  "embedding_dim":[50,600],
 
-  "max_epoch": 2 ,
+  "max_epoch": 100 ,
 
   "validate_every": 1,
 
@@ -29,7 +29,7 @@
 
   "data_folder": "data/universal_embedding_dataset_6000",
   "datasets": ["oso.hdf5","mos.hdf5"],
-  "learning_rate": [0.001,0.001,0.001,0.001,0.001,0.001],
+  "learning_rate": [0.0001,0.0001,0.0001,0.0001,0.0001,0.0001],
 
   "tensorboard":false,
 
