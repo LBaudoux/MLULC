@@ -67,7 +67,7 @@ class MultiLULCAgent(BaseAgent):
         self.models = [EncDec(input_channel,output_channel,mul=self.config.mul,softpos=self.config.softpos,number_feature_map=self.config.number_of_feature_map,embedding_dim=self.config.embedding_dim[0],memory_monger=self.config.memory_monger,up_mode=self.config.up_mode,num_groups=self.config.group_norm,decoder_depth=config.decoder_depth,mode=config.mode,resize=resize,cat=False,pooling_factors=config.pooling_factors,decoder_atrou=self.config.decoder_atrou) for input_channel,output_channel,resize in zip(input_channels,output_channels,resizes)]
 
         self.coord_model=nn.Sequential(nn.Linear(128, 300),nn.ReLU(inplace=True),nn.Linear(300, self.config.embedding_dim[0]),nn.ReLU(inplace=True))
-        self.coord_optimizer = optim.Adam(self.coord_model.parameters(), lr=0.002)
+        self.coord_optimizer = optim.Adam(self.coord_model.parameters(), lr=self.config.learning_rate[0])
         # define optimizer
         self.optimizers = [optim.Adam(net.parameters(), lr=self.config.learning_rate[i]) for i,net in enumerate(self.models)] #eps est obligatoire avec mode half ,eps=0.0001
 
